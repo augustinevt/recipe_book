@@ -1,6 +1,51 @@
-<h1>Recipe Show</h1>
+<h1><%=@recipe.name()%></h1>
 
-<%= @recipe.name() %>
-<%= @recipe.instructions() %>
-<%= @recipe.rating() %>
-<%= @recipe.image() %>
+<div class="row">
+  <div class="col s6">
+    <h3>Instructions</h3>
+    <p><%=@recipe.instructions()%></p>
+    <h3>Rating</h3>
+    <p><%=@recipe.rating()%></p>
+  </div>
+  <div class="col s6">
+    <h3>Ingredients</h3>
+    <ul>
+      <% @recipe.ingredients.each() do |ingredient| %>
+        <li><%= ingredient.name() %></li>
+        <li><%= ingredient.amount() %></li>
+        <li><%= ingredient.unit() %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <h3>Associated Categories</h3>
+      <ul>
+        <% @recipe.tags.each() do |tag| %>
+          <li><%= tag.name() %></li>
+        <% end %>
+      </ul>
+      <form class="" action="/tags/create" method="post">
+        <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+        <% @unused_tags.each() do |unused_tag| %>
+          <input type="hidden" name="tag_name" value="<%=unused_tag.name%>">
+          <button type="submit" name="button"><%= unused_tag.name() %></button>
+        <% end %>
+      </form>
+      <form class="" action="/tags/create" method="post">
+        <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+        <h3>Add Category</h3>
+        <label for="tag_name">Category:
+          <input type="text" name="tag_name">
+        </label>
+        <button type="submit" name="button">Add Category</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<a href="/recipes/<%=@recipe.id%>/edit">EDIT</a>

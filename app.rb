@@ -17,27 +17,30 @@ post('/ingredients/create') do
   redirect "recipes/#{params['recipe_id']}/edit"
 end
 
-post('tags/create') do
+post('/tags/create') do
   @recipe = Recipe.find(params['recipe_id'])
   if Tag.find_by_name(params['tag_name'])
     tag = Tag.find_by_name(params['tag_name'])
-    @recipe = Recipe.tags.push(tag);
   else
-    Tag.new({:recipe_id => [@recipe.id()]})
+    tag = Tag.create(name: params['tag_name'])
   end
-
+  @recipe.tags.push(tag)
   redirect "recipes/#{params['recipe_id']}/edit"
 end
 
 get('/recipes/:id/edit') do
   @recipe = Recipe.find(params['id'])
   @ingredients = Ingredient.all
+  @tags = Tag.all
+  @unused_tags = @tags - @recipe.tags
   erb(:recipe_edit)
 end
 
 get('/recipes/:id') do
   @recipe = Recipe.find(params['id'])
   @ingredients = Ingredient.all
+  @tags = Tag.all
+  @unused_tags = @tags - @recipe.tags
   erb(:recipe)
 end
 
@@ -45,5 +48,5 @@ patch('/recipes/:id') do
   @recipe = Recipe.find(params['id'])
   # @recipe.update(params)
   @recipe.update(instructions: params['instructions'], rating: params['rating'], name: params['name'], image: params['image'])
-  redirect "recipes/#{@recipe.id()}"
+  redirect "recipes/#{@recipe.id()}/edit"
 end

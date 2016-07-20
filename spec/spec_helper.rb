@@ -15,10 +15,10 @@ RSpec.configure do |config|
     Recipe.all.each do |recipe|
       recipe.destroy()
     end
-  Ingredient.all.each do |ingredient|
+    Ingredient.all.each do |ingredient|
       ingredient.destroy()
     end
-  Tag.all.each do |tag|
+    Tag.all.each do |tag|
       tag.destroy()
     end
   end
