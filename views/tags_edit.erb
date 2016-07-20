@@ -1,0 +1,22 @@
+<h3>Associated Categories</h3>
+<ul>
+  <% @recipe.tags.each() do |tag| %>
+    <li><%= tag.name() %></li>
+  <% end %>
+</ul>
+<form id="tag_form" action="/tags/create" method="post">
+  <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+  <% @unused_tags.each() do |unused_tag| %>
+    <input type="hidden" name="tag_name" value="<%=unused_tag.name%>">
+    <button type="submit" name="button"><%= unused_tag.name() %></button>
+  <% end %>
+</form>
+<form class="" action="/tags/create" method="post">
+  <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+  <h3>Add Category</h3>
+  <label for="tag_name">Category:
+    <input type="text" name="tag_name">
+  </label>
+  <button id="tag_submit" onclick="submitTags()" type="submit" name="button">Add Category</button>
+</form>
+</div>

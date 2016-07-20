@@ -1,73 +1,18 @@
-<div class="row">
-  <div class="col s6">
-    <form id="recipe_form" action="/recipes/<%= @recipe.id() %>" method="post">
-      <input type="hidden" name="_method" value="patch">
-      <h3>Recipe</h3>
-      <label for="name">Name of Recipe:
-        <input type="text" name="name" value="<%= @recipe.name() %>">
-      </label>
-      <h3>Instructions</h3>
-      <label for="instructions">Instructions:
-        <textarea rows="8" cols="40" name="instructions" value="<%= @recipe.instructions() %>"></textarea>
-      </label>
-      <label for="rating">Rating(1-5):
-        <input type="number" name="rating" value="<%= @recipe.rating() %>">
-      </label>
-      <label for="image">Image(link):
-        <input type="text" name="image" value="<%= @recipe.image() %>">
-      </label>
-      <button id="recipe_submit" type="submit" name="button">Save</button>
-    </form>
-  </div>
-  <div class="col s6">
-    <h3>Ingredients</h3>
-    <ul>
-      <% @recipe.ingredients.each() do |ingredient| %>
-        <li><%= ingredient.name() %></li>
-        <li><%= ingredient.amount() %></li>
-        <li><%= ingredient.unit() %></li>
-      <% end %>
-    </ul>
-    <form id="ingredient_form" action="/ingredients/create" method="post">
-      <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
-      <h3>Add Ingredients</h3>
-      <label for="ingredient_name">Ingredient:
-        <input type="text" name="ingredient_name">
-      </label>
-      <label for="amount">Amount:
-        <input type="number" name="amount">
-      </label>
-      <label for="unit">Unit:
-        <input type="text" name="unit">
-      </label>
-      <button id="ingredient_submit" onclick="submitIngredients()" type="submit" name="button">Add Ingredient</button>
-    </form>
-  </div>
-
-  <div class="row">
-    <div class="col s12">
-      <h3>Associated Categories</h3>
-      <ul>
-        <% @recipe.tags.each() do |tag| %>
-          <li><%= tag.name() %></li>
-        <% end %>
-      </ul>
-      <form id="tag_form" action="/tags/create" method="post">
-        <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
-        <% @unused_tags.each() do |unused_tag| %>
-          <input type="hidden" name="tag_name" value="<%=unused_tag.name%>">
-          <button type="submit" name="button"><%= unused_tag.name() %></button>
-        <% end %>
-      </form>
-      <form class="" action="/tags/create" method="post">
-        <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
-        <h3>Add Category</h3>
-        <label for="tag_name">Category:
-          <input type="text" name="tag_name">
-        </label>
-        <button id="tag_submit" onclick="submitTags()" type="submit" name="button">Add Category</button>
-      </form>
-    </div>
-  </div>
-</div>
-<iframe height="1100px" width="1100px" src="/recipes/<%=@recipe.id%>/edit"></iframe>
+<form id="recipe_form" action="/recipes/<%= @recipe.id() %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <h3>Recipe</h3>
+  <label for="name">Name of Recipe:
+    <input type="text" name="name" value="<%= @recipe.name() %>">
+  </label>
+  <h3>Instructions</h3>
+  <label for="instructions">Instructions:
+    <textarea rows="8" cols="40" name="instructions" value="<%= @recipe.instructions() %>"></textarea>
+  </label>
+  <label for="rating">Rating(1-5):
+    <input type="number" name="rating" value="<%= @recipe.rating() %>">
+  </label>
+  <label for="image">Image(link):
+    <input type="text" name="image" value="<%= @recipe.image() %>">
+  </label>
+  <button id="recipe_submit" type="submit" name="button">Save</button>
+</form>

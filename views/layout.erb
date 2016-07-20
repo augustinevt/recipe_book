@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="<%= url('styles.css') %>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="<%= url('scripts.js') %>"></script>
@@ -8,18 +9,6 @@
     <title>Recipe Book</title>
   </head>
   <body>
-    <nav>
-      <div class="nav-wrapper container">
-        <a href="/" class="brand-logo">Recipe Book</a>
-        <ul class="right hide-on-med-and-down">
-          <li>
-            <form class="" action="/recipes/create" method="post">
-              <button type="submit" name="button">New Recipe</button>
-            </form>
-          </li>
-        </ul>
-      </div>
-    </nav>
     <%= yield %>
   </body>
 </html>
