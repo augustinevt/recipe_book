@@ -1,5 +1,5 @@
 <div class="form_wrappers">
-  <h3 class="center">Ingredients</h3>
+  <h3 class="thin center">Ingredients</h3>
   <ul>
     <% if @recipe.ingredients.any?() %>
       <% @recipe.ingredients.each() do |ingredient| %>
@@ -9,9 +9,7 @@
         <li class="ingredients_list_form"><%= ingredient.name() %> ( <%= ingredient.amount() %> <%= ingredient.unit() %> )
             <button class="delete-button trashcan trashcan-ingredients" type="submit" name="button"><i class="material-icons ">delete</i></button>
         </li>
-
       </form>
-
       <% end %>
     <% else %>
       <li class="prompt">Please add an ingredient.</li>
@@ -20,7 +18,7 @@
   <br>
   <form id="ingredient_form" action="/ingredients/create" method="post">
     <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
-    <h3 class="center">Add Ingredients</h3>
+    <h3 class="thin center">Add Ingredients</h3>
     <div class="row">
       <div class="input-field col s12">
         <input type="text" name="ingredient_name">

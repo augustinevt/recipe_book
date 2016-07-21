@@ -3,12 +3,12 @@
     <input type="hidden" name="_method" value="patch">
     <div class="row">
       <div class="input-field col s12">
-        <input id="new_recipe_input" type="text" name="name" value="<%= @recipe.name() %>" autofocus onfocus="this.value = this.value;">
+        <input class="thin" id="new_recipe_input" type="text" name="name" value="<%= @recipe.name() %>" autofocus onfocus="this.value = this.value;">
         <label for="name"></label>
       </div>
     </div>
     <div id="instructions-input">
-      <h3>Instructions</h3>
+      <h3 class="thin">Instructions</h3>
       <label for="instructions"></label>
       <textarea rows="200" cols="400" name="instructions" value="<%= @recipe.instructions() %>"><%= @recipe.instructions() %></textarea>
     </div>

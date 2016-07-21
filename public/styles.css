@@ -23,7 +23,45 @@
 
 /*GENERAL*/
 
+.antz {
+  display: none;
+}
 
+#ant1 {
+  position: absolute;
+  right: 40px;
+  bottom: 50px;
+}
+#ant2 {
+  position: absolute;
+  right: 400px;
+  bottom: 650px;
+  transform: rotate(14deg);
+}
+#ant3 {
+  position: absolute;
+  left: 300px;
+  top: 50px;
+  transform: rotate(260deg);
+}
+#ant4 {
+  position: absolute;
+  right: 700px;
+  bottom: 150px;
+  transform: rotate(111deg);
+}
+#ant5 {
+  position: absolute;
+  left: 200px;
+  bottom: 400px;
+  transform: rotate(60deg);
+}
+#ant6 {
+  position: absolute;
+  right: 100px;
+  top: 100px;
+  transform: rotate(170deg);
+}
 
 .card-size {
   height: 200px;

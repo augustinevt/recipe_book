@@ -1,5 +1,5 @@
 <div class="form_wrappers">
-  <h3 class="center">Categories</h3>
+  <h3 class="thin center">Categories</h3>
   <ul>
     <% if @recipe.tags.any?() %>
       <% @recipe.tags.each() do |tag| %>
@@ -19,8 +19,8 @@
     <% end %>
   </ul>
   <br>
-  <h3 class="center">Add Categories</h3>
-  <div class="center">
+  <h3 class="thin center">Add Categories</h3>
+  <div class="tag-wrapper-2 center">
     <% @unused_tags.each() do |unused_tag| %>
       <form class="center tag-add" id="tag_form" action="/tags/create" method="post">
         <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
