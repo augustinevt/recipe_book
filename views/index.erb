@@ -1,18 +1,47 @@
-<nav>
-  <div class="nav-wrapper container">
-    <a href="/" class="brand-logo">Recipe Book</a>
-    <ul class="right hide-on-med-and-down">
-      <li>
-        <form class="" action="/recipes/create" method="post">
-          <button type="submit" name="button">New Recipe</button>
-        </form>
-      </li>
-    </ul>
+<nav id="search_nav">
+  <div class="nav-wrapper amber lighten-5 z-depth-0">
+    <form>
+      <div class="input-field">
+        <input id="search" class="black-text" type="search" required>
+        <label for="search"><i class="material-icons pink-text">search</i></label>
+      </div>
+    </form>
+  </div>
+</nav>
+<nav id="main_nav">
+  <div class="navbar-fixed amber lighten-5 z-depth-0">
+    <div class="col s8 offset-s3">
+      <div id="main_header" class="nav-wrapper amber lighten-5">
+        <a href="/" class="brand-logo center great-vibes black-text accent-4">The Recipe</a>
+        <ul class="right hide-on-med-and-down">
+          <li class="active"><a href="/" class="black-text accent-4 custom-active thin">HOME</a></li>
+          <li>
+            <form action="/recipes/create" method="post"><a href="#">
+              <button class="waves-effect waves-light btn pink accent-4" type="submit" name="button">New Recipe</button></a>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>
 
-<h1>Index</h1>
 
-<% @recipes.each do |recipe| %>
-  <a href="/recipes/<%=recipe.id()%>"><%= recipe.name %></a>
-<% end %>
+
+
+<div class="main_content">
+  <div class="row">
+    <div id="recipe-wrapper" class="wrapper">
+      <h1>Recipes (image-grid)</h1>
+      <% @recipes.each do |recipe| %>
+        <a href="/recipes/<%=recipe.id()%>"><%= recipe.name %></a><br>
+      <% end %>
+    </div>
+    <div id="tag-wrapper" class="wrapper">
+      <h1>Categories (changes-image-grid)</h1>
+      <% @tags.each do |tag| %>
+        <a href="/recipes/<%=tag.id()%>"><%= tag.name %></a><br>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,26 +1,42 @@
-<nav>
-  <div class="nav-wrapper container">
-    <a href="/" class="brand-logo">Recipe Book</a>
-    <ul class="right hide-on-med-and-down">
-      <li>
-        <form class="" action="/recipes/create" method="post">
-          <button type="submit" name="button">New Recipe</button>
-        </form>
-      </li>
-    </ul>
+<nav id="search_nav">
+  <div class="nav-wrapper amber lighten-5 z-depth-0">
+    <form>
+      <div class="input-field">
+        <input id="search" class="black-text" type="search" required>
+        <label for="search"><i class="material-icons pink-text">search</i></label>
+      </div>
+    </form>
+  </div>
+</nav>
+<nav id="main_nav">
+  <div class="navbar-fixed amber lighten-5 z-depth-0">
+    <div class="col s8 offset-s3">
+      <div id="main_header" class="nav-wrapper amber lighten-5">
+        <a href="/" class="brand-logo center great-vibes black-text accent-4">The Recipe</a>
+        <ul class="right hide-on-med-and-down">
+          <li class="active"><a href="/recipes/<%=@recipe.id()%>/edit" class="black-text accent-4 custom-active thin">EDIT</a></li>
+          <li class=""><a href="/" class="black-text accent-4 custom-active thin">HOME</a></li>
+          <li>
+            <form action="/recipes/create" method="post"><a href="#">
+              <button class="waves-effect waves-light btn pink accent-4" type="submit" name="button">New Recipe</button></a>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>
 
-<div class="row">
-  <div class="col s6">
-    <iframe  src="/recipes/<%=@recipe.id()%>/recipe/edit" width="100%" height="700px" seamless></iframe >
-  </div>
-  <div class="col s6">
-    <iframe  src="/recipes/<%=@recipe.id()%>/ingredients/edit" width="100%" height="700px"></iframe>
-  </div>
-</div>
+<div class="main_content">
   <div class="row">
-    <div class="col s12">
-      <iframe  src="/recipes/<%=@recipe.id()%>/tags/edit" width="100%" height="400px"></iframe>
+    <div class="col s5 iframe">
+      <iframe  src="/recipes/<%=@recipe.id()%>/recipe/edit" width="100%" height="700px" seamless></iframe >
+    </div>
+    <div id="second-iframe" class="col s3 iframe">
+      <iframe  src="/recipes/<%=@recipe.id()%>/ingredients/edit" width="100%" height="700px"></iframe>
+    </div>
+    <div id="third-iframe"class="col s3 iframe">
+      <iframe  src="/recipes/<%=@recipe.id()%>/tags/edit" width="100%" height="700px"></iframe>
     </div>
   </div>
+</div>

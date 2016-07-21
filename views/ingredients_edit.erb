@@ -1,22 +1,24 @@
-<h3>Ingredients</h3>
-<ul>
-  <% @recipe.ingredients.each() do |ingredient| %>
-    <li><%= ingredient.name() %></li>
-    <li><%= ingredient.amount() %></li>
-    <li><%= ingredient.unit() %></li>
-  <% end %>
-</ul>
-<form id="ingredient_form" action="/ingredients/create" method="post">
-  <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
-  <h3>Add Ingredients</h3>
-  <label for="ingredient_name">Ingredient:
-    <input type="text" name="ingredient_name">
-  </label>
-  <label for="amount">Amount:
-    <input type="number" name="amount">
-  </label>
-  <label for="unit">Unit:
-    <input type="text" name="unit">
-  </label>
-  <button id="ingredient_submit" onclick="submitIngredients()" type="submit" name="button">Add Ingredient</button>
-</form>
+<div class="form_wrappers">
+  <h3>Ingredients</h3>
+  <ul>
+    <% @recipe.ingredients.each() do |ingredient| %>
+      <li><%= ingredient.name() %></li>
+      <li><%= ingredient.amount() %></li>
+      <li><%= ingredient.unit() %></li>
+    <% end %>
+  </ul>
+  <form id="ingredient_form" action="/ingredients/create" method="post">
+    <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+    <h3>Add Ingredients</h3>
+    <label for="ingredient_name">Ingredient:
+      <input type="text" name="ingredient_name">
+    </label>
+    <label for="amount">Amount:
+      <input type="number" name="amount">
+    </label>
+    <label for="unit">Unit:
+      <input type="text" name="unit">
+    </label>
+    <button id="ingredient_submit" onclick="submitIngredients()" type="submit" name="button">Add Ingredient</button>
+  </form>
+</div>

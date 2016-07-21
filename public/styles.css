@@ -1,4 +1,111 @@
+/*HEADER*/
+
+.nav-wrapper, .nav-wrapper form, .nav-wrapper form .input-field {
+  height: 100%;
+  border: 0px solid black;
+}
+
+#search_nav {
+  width:30%;
+  float: left;
+}
+
+#main_nav {
+  position: absolute;
+  left: 30%;
+  width:70%;
+}
+
+#main_header {
+  margin-left: -40%;
+}
+
+
+/*GENERAL*/
+
+.great-vibes {
+  font-family: 'Lobster', cursive;
+}
+
+body {
+  background-image: url("/tablecloth.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main_content {
+  clear: both;
+  width: 100%;
+}
+
+#ingredients_list {
+  list-style-type: circle;
+}
+
+
+/*WRAPPERS*/
+
+.wrapper, .form_wrappers {
+  background-color: white;
+  padding: 30px 50px 50px 50px;
+  width: 100%;
+  height: 700px;
+  border-radius: 25px;
+  box-shadow: 0 0 0 1px #000;
+}
+
+#recipe-wrapper {
+  margin-top: 30px;
+  margin-left: 3.6%;
+  width: 68.5%;
+  float: left;
+}
+
+#tag-wrapper {
+  margin-top: 30px;
+  margin-left: 2.6%;
+  width: 21.5%;
+  float: left;
+}
+
+#first-table {
+  margin-top: 30px;
+  margin-left: 3.6%;
+  width: 40.5%;
+  float: left;
+}
+
+#second-table {
+  margin-top: 30px;
+  margin-left: 2.6%;
+  width: 23.6%;
+  float: left;
+}
+
+#third-table {
+  margin-top: 30px;
+  margin-left: 2.3%;
+  width: 23.6%;
+  float: left;
+}
+
+
+/*iFRAME*/
+
 iframe {
   border-width: 0px;
+  margin-top: 30px;
+  margin-left: 7.5%;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  box-shadow: 0 0 0 1px #000;
+}
 
+#second-iframe {
+  margin-left: 2.5%;
+}
+
+#third-iframe {
+  margin-left: 1%;
 }

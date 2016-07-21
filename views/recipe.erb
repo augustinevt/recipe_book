@@ -1,64 +1,57 @@
-<nav>
-  <div class="nav-wrapper container">
-    <a href="/" class="brand-logo">Recipe Book</a>
-    <ul class="right hide-on-med-and-down">
-      <li>
-        <form class="" action="/recipes/create" method="post">
-          <button type="submit" name="button">New Recipe</button>
-        </form>
-      </li>
-    </ul>
+<nav id="search_nav">
+  <div class="nav-wrapper amber lighten-5 z-depth-0">
+    <form>
+      <div class="input-field">
+        <input id="search" class="black-text" type="search" required>
+        <label for="search"><i class="material-icons pink-text">search</i></label>
+      </div>
+    </form>
+  </div>
+</nav>
+<nav id="main_nav">
+  <div class="navbar-fixed amber lighten-5 z-depth-0">
+    <div class="col s8 offset-s3">
+      <div id="main_header" class="nav-wrapper amber lighten-5">
+        <a href="/" class="brand-logo center great-vibes black-text accent-4">The Recipe</a>
+        <ul class="right hide-on-med-and-down">
+          <li class="active"><a href="/recipes/<%=@recipe.id()%>" class="pink-text accent-4 custom-active thin"><%=@recipe.name()%></a></li>
+          <li class=""><a href="/" class="black-text accent-4 custom-active thin">HOME</a></li>
+          <li>
+            <form action="/recipes/create" method="post"><a href="#">
+              <button class="waves-effect waves-light btn pink accent-4" type="submit" name="button">New Recipe</button></a>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>
 
-<h1><%=@recipe.name()%></h1>
-
-<div class="row">
-  <div class="col s6">
-    <h3>Instructions</h3>
-    <p><%=@recipe.instructions()%></p>
-    <h3>Rating</h3>
-    <p><%=@recipe.rating()%></p>
-  </div>
-  <div class="col s6">
-    <h3>Ingredients</h3>
-    <ul>
-      <% @recipe.ingredients.each() do |ingredient| %>
-        <li><%= ingredient.name() %></li>
-        <li><%= ingredient.amount() %></li>
-        <li><%= ingredient.unit() %></li>
-      <% end %>
-    </ul>
-  </div>
-
+<div class="main_content">
   <div class="row">
-    <div class="col s12">
-      <h3>Associated Categories</h3>
+    <div id="first-table" class="wrapper">
+      <h1><%=@recipe.name()%></h1>
+      <a href="/recipes/<%=@recipe.id%>/edit">EDIT</a>
+      <h3>Instructions</h3>
+      <p><%=@recipe.instructions()%></p>
+      <h3>Rating</h3>
+      <p><%=@recipe.rating()%></p>
+    </div>
+    <div id="second-table" class="wrapper">
+      <h3>Ingredients</h3>
+      <ul>
+        <% @recipe.ingredients.each() do |ingredient| %>
+          <li id="ingredients_list"><%= ingredient.name() %> ( <%= ingredient.amount() %> <%= ingredient.unit() %> )</li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="third-table" class="wrapper">
+      <h3>Related</h3>
       <ul>
         <% @recipe.tags.each() do |tag| %>
           <li><%= tag.name() %></li>
         <% end %>
       </ul>
-      <form class="" action="/tags/create" method="post">
-        <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
-        <% @unused_tags.each() do |unused_tag| %>
-          <input type="hidden" name="tag_name" value="<%=unused_tag.name%>">
-          <button type="submit" name="button"><%= unused_tag.name() %></button>
-        <% end %>
-      </form>
-      <form class="" action="/tags/create" method="post">
-        <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
-        <h3>Add Category</h3>
-        <label for="tag_name">Category:
-          <input type="text" name="tag_name">
-        </label>
-        <button type="submit" name="button">Add Category</button>
-      </form>
     </div>
   </div>
 </div>
-
-
-
-
-<a href="/recipes/<%=@recipe.id%>/edit">EDIT</a>

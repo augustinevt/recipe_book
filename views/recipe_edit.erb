@@ -1,18 +1,20 @@
-<form id="recipe_form" action="/recipes/<%= @recipe.id() %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <h3>Recipe</h3>
-  <label for="name">Name of Recipe:
-    <input type="text" name="name" value="<%= @recipe.name() %>">
-  </label>
-  <h3>Instructions</h3>
-  <label for="instructions">Instructions:
-    <textarea rows="8" cols="40" name="instructions" value="<%= @recipe.instructions() %>"></textarea>
-  </label>
-  <label for="rating">Rating(1-5):
-    <input type="number" name="rating" value="<%= @recipe.rating() %>">
-  </label>
-  <label for="image">Image(link):
-    <input type="text" name="image" value="<%= @recipe.image() %>">
-  </label>
-  <button id="recipe_submit" type="submit" name="button">Save</button>
-</form>
+<div class="form_wrappers">
+  <form id="recipe_form" action="/recipes/<%= @recipe.id() %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <h3>Recipe</h3>
+    <label for="name">Name of Recipe:
+      <input type="text" name="name" value="<%= @recipe.name() %>">
+    </label>
+    <h3>Instructions</h3>
+    <label for="instructions">Instructions:
+      <textarea rows="8" cols="40" name="instructions" value="<%= @recipe.instructions() %>"></textarea>
+    </label>
+    <label for="rating">Rating(1-5):
+      <input type="number" name="rating" value="<%= @recipe.rating() %>">
+    </label>
+    <label for="image">Image(link):
+      <input type="text" name="image" value="<%= @recipe.image() %>">
+    </label>
+    <button id="recipe_submit" type="submit" name="button">Save</button>
+  </form>
+</div>

@@ -4,6 +4,7 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get('/') do
   @recipes = Recipe.all()
+  @tags = Tag.all()
   erb(:index)
 end
 
