@@ -8,6 +8,14 @@ get('/') do
   erb(:index)
 end
 
+
+get('/search') do
+  @matched_recipes = Recipe.includes(:tags).where('tags.name' => params['tag_name']).all()
+  @tag = Tag.find_by_name(params['tag_name'])
+  @tags = Tag.all()
+  erb(:search)
+end
+
 get('/recipes/:id') do
   @recipe = Recipe.find(params['id'])
   @ingredients = Ingredient.all
@@ -24,12 +32,18 @@ patch('/recipes/:id') do
 end
 
 post('/recipes/create') do
-  @recipe = Recipe.create();
+  @recipe = Recipe.create(name: 'New Recipe', instructions: 'feed me Bacon ipsum dolor amet pork loin tail tongue chicken. Ball tip ham hock turducken beef ribs, alcatra jowl biltong pig boudin flank meatloaf fatback sausage bresaola brisket. Bresaola fatback sausage, tri-tip brisket tenderloin bacon turkey. Corned beef landjaeger boudin flank beef ribs pancetta ham kevin. T-bone drumstick filet mignon, ribeye rump fatback cow pig corned beef sausage capicola ham hock. Filet mignon porchetta pork loin pork chop cupim pig pancetta sausage, ham tongue shank tenderloin rump beef ribs. Porchetta filet mignon swine pork loin andouille biltong beef ribs.', rating: 2, image: "http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2011/7/26/1/EA0914_creme-brulee_s4x3.jpg");
   redirect "recipes/#{@recipe.id()}/edit"
 end
 
 post('/ingredients/create') do
   @ingredient = Ingredient.create(name: params['ingredient_name'], amount: params['amount'], unit: params['unit'], recipe_id: params['recipe_id']);
+  redirect "recipes/#{params['recipe_id']}/ingredients/edit"
+end
+
+delete('/ingredients/:id/destroy') do
+  @ingredient = Ingredient.find(params['id'])
+  @ingredient.destroy()
   redirect "recipes/#{params['recipe_id']}/ingredients/edit"
 end
 
@@ -67,4 +81,10 @@ get('/recipes/:id/tags/edit') do
   @tags = Tag.all
   @unused_tags = @tags - @recipe.tags
   erb(:tags_edit)
+end
+
+patch('/recipes/:recipe_id/tags/:id') do
+  @tag = Tag.find(params['id'])
+  @tag.update(recipe_ids: nil)
+redirect "/recipes/#{params['recipe_id']}/tags/edit"
 end

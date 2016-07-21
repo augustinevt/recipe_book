@@ -23,9 +23,66 @@
 
 /*GENERAL*/
 
+.form_wrappers li {
+  width: 100%;
+}
+
+.card-title-custom {
+  color: black !important;
+}
+
+.custom-span {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+h1 {
+  border-bottom: 1px solid black;
+}
+
+.delete-button {
+  background:none!important;
+  border:none;
+  padding:0!important;
+  font: inherit;
+  cursor: pointer;
+}
+
+#catagories-header {
+  font-size: 3vw;
+}
+
+textarea {
+  height: 200px;
+}
+
+#new_recipe_input {
+  font-size: 50px;
+  height: 100px;
+}
+
+#instructions-input {
+  padding: 0 10px;
+}
+
 .great-vibes  {
   font-family: 'Lobster', cursive;
 }
+
+.trashcan {
+  margin-right: 5%;
+  float: right;
+  color: pink;
+  clear: both;
+}
+
+.trashcan-ingredients {
+  margin-right: 10%;
+}
+
+.input-field input[type]:focus {
+     border-bottom: 1px solid lightblue;
+     box-shadow: 0 1px 0 0 lightblue;
+   }
 
 body {
   background-image: url("/tablecloth.png");
@@ -47,6 +104,7 @@ body {
 .ingredients_list_form {
   list-style-type: circle;
   margin-left: 28px;
+  float: left;
 }
 
 .tags_list_form {
@@ -90,12 +148,14 @@ body {
   margin-left: 3.6%;
   width: 68.5%;
   float: left;
+  height: 100%;
 }
 
 #tag-wrapper {
   margin-top: 30px;
   margin-left: 2.6%;
   width: 21.5%;
+  height: 100%;
   float: left;
 }
 

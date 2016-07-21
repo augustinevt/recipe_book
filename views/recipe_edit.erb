@@ -1,20 +1,31 @@
 <div class="form_wrappers">
   <form id="recipe_form" action="/recipes/<%= @recipe.id() %>" method="post">
     <input type="hidden" name="_method" value="patch">
-    <h3>Recipe</h3>
-    <label for="name">Name of Recipe:
-      <input type="text" name="name" value="<%= @recipe.name() %>">
-    </label>
-    <h3>Instructions</h3>
-    <label for="instructions">Instructions:
-      <textarea rows="8" cols="40" name="instructions" value="<%= @recipe.instructions() %>"></textarea>
-    </label>
-    <label for="rating">Rating(1-5):
-      <input type="number" name="rating" value="<%= @recipe.rating() %>">
-    </label>
-    <label for="image">Image(link):
-      <input type="text" name="image" value="<%= @recipe.image() %>">
-    </label>
-    <button id="recipe_submit" type="submit" name="button">Save</button>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="new_recipe_input" type="text" name="name" value="<%= @recipe.name() %>" autofocus onfocus="this.value = this.value;">
+        <label for="name"></label>
+      </div>
+    </div>
+    <div id="instructions-input">
+      <h3>Instructions</h3>
+      <label for="instructions"></label>
+      <textarea rows="200" cols="400" name="instructions" value="<%= @recipe.instructions() %>"><%= @recipe.instructions() %></textarea>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <label for="rating">Rating (1-5):</label>
+        <input type="number" name="rating" value="<%= @recipe.rating() %>">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <label for="image">Image (link):</label>
+        <input type="text" name="image" value="<%= @recipe.image() %>">
+      </div>
+    </div>
+    <div class="center">
+      <button id="ingredient_submit" class="center submit" type="submit" name="button">Save</button>
+    </div>
   </form>
 </div>

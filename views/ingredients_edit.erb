@@ -3,7 +3,15 @@
   <ul>
     <% if @recipe.ingredients.any?() %>
       <% @recipe.ingredients.each() do |ingredient| %>
-      <li class="ingredients_list_form"><%= ingredient.name() %> ( <%= ingredient.amount() %> <%= ingredient.unit() %> )</li>
+      <form class="" action="/ingredients/<%=ingredient.id()%>/destroy" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="recipe_id" value="<%=@recipe.id()%>">
+        <li class="ingredients_list_form"><%= ingredient.name() %> ( <%= ingredient.amount() %> <%= ingredient.unit() %> )
+            <button class="delete-button trashcan trashcan-ingredients" type="submit" name="button"><i class="material-icons ">delete</i></button>
+        </li>
+
+      </form>
+
       <% end %>
     <% else %>
       <li class="prompt">Please add an ingredient.</li>
