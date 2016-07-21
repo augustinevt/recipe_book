@@ -1,11 +1,11 @@
 <nav id="search_nav">
   <div class="nav-wrapper amber lighten-5 z-depth-0">
     <form action="/search">
-      <div class="input-field">
-        <input id="search" class="black-text" type="search" name="tag_name" required>
-        <label for="search"><i class="material-icons pink-text">search</i></label>
-      </div>
-    </form>
+       <div class="input-field">
+         <input id="search" class="black-text" type="search" name="tag_name" required>
+         <label for="search"><i class="material-icons pink-text">search</i></label>
+       </div>
+     </form>
   </div>
 </nav>
 <nav id="main_nav">
@@ -30,24 +30,24 @@
 <div class="main_content">
   <div class="row">
     <div id="recipe-wrapper" class="wrapper">
-      <h1 class="center">Recipes</h1>
+      <h1 class="center thin">Recipes</h1>
       <% if @matched_recipes.any? %>
         <% @matched_recipes.each do |recipe| %>
-          <div class="col s3">
-            <div class="card blue-grey darken-1 ">
-              <div class="card-image">
-                <img class="responsive-img circle" src="http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2011/7/26/1/EA0914_creme-brulee_s4x3.jpg" alt="recipe photo" />
-                <span class="card-title custom-span"> <a class="card-title-custom" href="/recipes/<%=recipe.id()%>"><%= recipe.name %></a></span>
-              </div>
+        <div class="col s3 card-size">
+          <div class="card blue-grey darken-1 ">
+            <div class="card-image">
+              <img class="" src="<%=recipe.image()%>" alt="recipe photo" />
+              <span class="card-title custom-span"> <a class="card-title-custom" href="/recipes/<%=recipe.id()%>"><%= recipe.name %></a></span>
             </div>
           </div>
+        </div>
         <% end %>
       <%else%>
         <h3 class="center">No recipes found for that tag</h3>
       <%end%>
     </div>
     <div id="tag-wrapper" class="wrapper">
-      <h3 id="catagories-header">Categories</h3>
+      <h3 id="catagories-header" class="thin">Categories</h3>
       <% @tags.each do |tag| %>
         <a href="/search?tag_name=<%=tag.name()%>"><%= tag.name %></a><br>
       <% end %>

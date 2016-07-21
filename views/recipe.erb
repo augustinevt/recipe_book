@@ -1,11 +1,11 @@
 <nav id="search_nav">
   <div class="nav-wrapper amber lighten-5 z-depth-0">
-    <form>
-      <div class="input-field">
-        <input id="search" class="black-text" type="search" required>
-        <label for="search"><i class="material-icons pink-text">search</i></label>
-      </div>
-    </form>
+    <form action="/search">
+       <div class="input-field">
+         <input id="search" class="black-text" type="search" name="tag_name" required>
+         <label for="search"><i class="material-icons pink-text">search</i></label>
+       </div>
+     </form>
   </div>
 </nav>
 <nav id="main_nav">
@@ -30,15 +30,19 @@
 <div class="main_content">
   <div class="row">
     <div id="first-table" class="wrapper">
-      <h1><%=@recipe.name()%></h1>
-      <a href="/recipes/<%=@recipe.id%>/edit">EDIT</a>
-      <h3>Instructions</h3>
+      <h1 class="thin"><%=@recipe.name()%></h1>
+      <a class="edit-link" href="/recipes/<%=@recipe.id%>/edit">EDIT</a>
+      <form action="/recipes/<%=@recipe.id%>/destroy" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit" class="delete-button pink-text accent-4" name="button">DELETE</button>
+      </form>
+      <h3 class="thin">Instructions</h3>
       <p><%=@recipe.instructions()%></p>
-      <h3>Rating</h3>
+      <h3 class="thin">Rating</h3>
       <p><%=@recipe.rating()%></p>
     </div>
     <div id="second-table" class="wrapper">
-      <h3>Ingredients</h3>
+      <h3 class="thin">Ingredients</h3>
       <ul>
         <% @recipe.ingredients.each() do |ingredient| %>
           <li class="ingredients_list"><%= ingredient.name() %> ( <%= ingredient.amount() %> <%= ingredient.unit() %> )</li>
@@ -46,7 +50,7 @@
       </ul>
     </div>
     <div id="third-table" class="wrapper">
-      <h3>Categories</h3>
+      <h3 class="thin">Categories</h3>
       <ul>
         <% @recipe.tags.each() do |tag| %>
           <li><%= tag.name() %></li>

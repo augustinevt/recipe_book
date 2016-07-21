@@ -23,6 +23,25 @@
 
 /*GENERAL*/
 
+
+
+.card-size {
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+}
+
+.card .card-image {
+  background-image: url('gap.png');
+  background-size: contain;
+  background-position: 150%;
+}
+
+.card .card-image img  {
+  height: 200px;
+  width: auto;
+}
+
 .form_wrappers li {
   width: 100%;
 }
@@ -45,6 +64,11 @@ h1 {
   padding:0!important;
   font: inherit;
   cursor: pointer;
+}
+
+.edit-link {
+  float: left;
+  margin-right: 20px;
 }
 
 #catagories-header {
@@ -129,6 +153,16 @@ body {
 .add_tag {
   background-color: #e91e63;
   color: white;
+}
+
+.tag-add {
+  display: inline;
+  margin-right: 8px;
+}
+
+.tag-wrapper-2 {
+  width: 100%;
+
 }
 
 

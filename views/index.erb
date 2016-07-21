@@ -29,13 +29,13 @@
 <div class="main_content">
   <div class="row">
     <div id="recipe-wrapper" class="wrapper">
-      <h1 class="center">Recipes</h1>
+      <h1 class="thin center">Recipes</h1>
       <% if @recipes.any? %>
         <% @recipes.each do |recipe| %>
-          <div class="col s3">
+          <div class="col s3 card-size">
             <div class="card blue-grey darken-1 ">
               <div class="card-image">
-                <img class="responsive-img circle" src="http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2011/7/26/1/EA0914_creme-brulee_s4x3.jpg" alt="recipe photo" />
+                <img class="" src="<%=recipe.image()%>" alt="recipe photo" />
                 <span class="card-title custom-span"> <a class="card-title-custom" href="/recipes/<%=recipe.id()%>"><%= recipe.name %></a></span>
               </div>
             </div>
@@ -46,7 +46,7 @@
       <%end%>
     </div>
     <div id="tag-wrapper" class="wrapper">
-      <h3 id="catagories-header">Categories</h3>
+      <h3 id="catagories-header" class="thin">Categories</h3>
       <% @tags.each do |tag| %>
         <a href="/search?tag_name=<%=tag.name()%>"><%= tag.name %></a><br>
       <% end %>

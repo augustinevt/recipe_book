@@ -3,17 +3,21 @@ Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get('/') do
-  @recipes = Recipe.all()
+  @recipes = Recipe.all().order('rating DESC')
   @tags = Tag.all()
   erb(:index)
 end
 
 
 get('/search') do
-  @matched_recipes = Recipe.includes(:tags).where('tags.name' => params['tag_name']).all()
-  @tag = Tag.find_by_name(params['tag_name'])
-  @tags = Tag.all()
-  erb(:search)
+  if Recipe.includes(:tags).where('tags.name' => params['tag_name']).any?
+    @matched_recipes = Recipe.includes(:tags).where('tags.name' => params['tag_name']).all().order('rating DESC')
+    @tag = Tag.find_by_name(params['tag_name'])
+    @tags = Tag.all()
+    erb(:search)
+  else
+    redirect "/"
+  end
 end
 
 get('/recipes/:id') do
@@ -34,6 +38,11 @@ end
 post('/recipes/create') do
   @recipe = Recipe.create(name: 'New Recipe', instructions: 'feed me Bacon ipsum dolor amet pork loin tail tongue chicken. Ball tip ham hock turducken beef ribs, alcatra jowl biltong pig boudin flank meatloaf fatback sausage bresaola brisket. Bresaola fatback sausage, tri-tip brisket tenderloin bacon turkey. Corned beef landjaeger boudin flank beef ribs pancetta ham kevin. T-bone drumstick filet mignon, ribeye rump fatback cow pig corned beef sausage capicola ham hock. Filet mignon porchetta pork loin pork chop cupim pig pancetta sausage, ham tongue shank tenderloin rump beef ribs. Porchetta filet mignon swine pork loin andouille biltong beef ribs.', rating: 2, image: "http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2011/7/26/1/EA0914_creme-brulee_s4x3.jpg");
   redirect "recipes/#{@recipe.id()}/edit"
+end
+
+delete ('/recipes/:id/destroy') do
+  @recipe = Recipe.find(params['id']).destroy()
+  redirect "/"
 end
 
 post('/ingredients/create') do

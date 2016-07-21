@@ -20,14 +20,15 @@
   </ul>
   <br>
   <h3 class="center">Add Categories</h3>
-  <form class="center" id="tag_form" action="/tags/create" method="post">
-    <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+  <div class="center">
     <% @unused_tags.each() do |unused_tag| %>
-      <input type="hidden" name="tag_name" value="<%=unused_tag.name%>">
-      <button class="add_tag" type="submit" name="button"><%= unused_tag.name() %></button>
+      <form class="center tag-add" id="tag_form" action="/tags/create" method="post">
+        <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+        <input type="hidden" name="tag_name" value="<%=unused_tag.name%>">
+        <button class="add_tag" type="submit" name="button"><%= unused_tag.name() %></button>
+      </form>
     <% end %>
-  </form>
-
+  </div>
   <form class="" action="/tags/create" method="post">
     <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
     <div class="row">
