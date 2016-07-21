@@ -1,24 +1,38 @@
 <div class="form_wrappers">
-  <h3>Associated Categories</h3>
+  <h3 class="center">Categories</h3>
   <ul>
-    <% @recipe.tags.each() do |tag| %>
-      <li><%= tag.name() %></li>
+    <% if @recipe.tags.any?() %>
+      <% @recipe.tags.each() do |tag| %>
+        <li class="tags_list_form"><%= tag.name() %></li>
+      <% end %>
+    <% else %>
+      <li class="prompt">Please add a category.</li>
     <% end %>
   </ul>
-  <form id="tag_form" action="/tags/create" method="post">
+  <br>
+  <br>
+  <br>
+  <br>
+  <h3 class="center">Add Categories</h3>
+  <form class="center" id="tag_form" action="/tags/create" method="post">
     <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
     <% @unused_tags.each() do |unused_tag| %>
       <input type="hidden" name="tag_name" value="<%=unused_tag.name%>">
-      <button type="submit" name="button"><%= unused_tag.name() %></button>
+      <button class="add_tag" type="submit" name="button"><%= unused_tag.name() %></button>
     <% end %>
   </form>
+
   <form class="" action="/tags/create" method="post">
     <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
-    <h3>Add Category</h3>
-    <label for="tag_name">Category:
-      <input type="text" name="tag_name">
-    </label>
-    <button id="tag_submit" onclick="submitTags()" type="submit" name="button">Add Category</button>
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="text" name="tag_name">
+        <label for="tag_name">Other:</label>
+      </div>
+    </div>
+    <div class="center">
+      <button id="tag_submit" class="submit" onclick="submitTags()" type="submit" name="button">Add Category</button>
+    </div>
   </form>
   </div>
 </div>

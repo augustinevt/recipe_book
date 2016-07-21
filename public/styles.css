@@ -23,7 +23,7 @@
 
 /*GENERAL*/
 
-.great-vibes {
+.great-vibes  {
   font-family: 'Lobster', cursive;
 }
 
@@ -39,8 +39,38 @@ body {
   width: 100%;
 }
 
-#ingredients_list {
+.ingredients_list {
   list-style-type: circle;
+  margin-left: 20px;
+}
+
+.ingredients_list_form {
+  list-style-type: circle;
+  margin-left: 28px;
+}
+
+.tags_list_form {
+  margin-left: 10px;
+  float: left;
+}
+
+.prompt {
+  text-align: center;
+  color: #e91e63;
+}
+
+.submit {
+  background-color: #fff8e1;
+  font-family:'Lobster', cursive;
+  font-size: 18px;
+  box-shadow: 0 0 0 1px #e91e63;
+  border-radius: 25px;
+  padding: 0px 10px;
+}
+
+.add_tag {
+  background-color: #e91e63;
+  color: white;
 }
 
 
